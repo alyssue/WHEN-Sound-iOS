@@ -15,7 +15,7 @@ import AVKit
 // NowPlayingViewControllerDelegate
 //*****************************************************************
 
-protocol NowPlayingViewControllerDelegate: class {
+protocol NowPlayingViewControllerDelegate: AnyObject {
     func didPressPlayingButton()
     func didPressStopButton()
     func didPressNextButton()
@@ -73,7 +73,8 @@ class NowPlayingViewController: UIViewController {
         // Set UI
         albumImageView.image = currentTrack.artworkImage
         stationDescLabel.text = currentStation.desc
-        stationDescLabel.isHidden = currentTrack.artworkLoaded
+//        stationDescLabel.isHidden = currentTrack.artworkLoaded
+        stationDescLabel.isHidden = true
         
         // Check for station change
         newStation ? stationDidChange() : playerStateDidChange(radioPlayer.state, animate: false)
@@ -137,7 +138,8 @@ class NowPlayingViewController: UIViewController {
         radioPlayer.radioURL = URL(string: currentStation.streamURL)
         albumImageView.image = currentTrack.artworkImage
         stationDescLabel.text = currentStation.desc
-        stationDescLabel.isHidden = currentTrack.artworkLoaded
+//        stationDescLabel.isHidden = currentTrack.artworkLoaded
+        stationDescLabel.isHidden = true
         title = currentStation.name
     }
     
@@ -201,7 +203,8 @@ class NowPlayingViewController: UIViewController {
             albumImageView.animate()
             stationDescLabel.isHidden = true
         } else {
-            stationDescLabel.isHidden = false
+//            stationDescLabel.isHidden = false
+            stationDescLabel.isHidden = true
         }
         
         // Force app to update display
